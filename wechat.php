@@ -11,7 +11,7 @@ function checkWeixin(){
     $timestamp = $_GET["timestamp"];
     $nonce = $_GET["nonce"];
     $echostr = $_GET["echostr"];
-    $token = "qilipingmgl";
+    $token = "farfetch";
 
     // 1）将token、timestamp、nonce三个参数进行字典序排序
     $tmpArr = array($nonce,$token,$timestamp);
