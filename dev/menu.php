@@ -19,7 +19,7 @@ echo '<hr />';
 //生成菜单
 $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$ac_token;
 // $data = '{"button":[{"name":"集团","sub_button":[{"type":"view","name":"品牌历史","url":"http://www.danielxie.xyz/natuzzi/new/history.html"},{"type":"view","name":"活动资讯","url":"http://www.danielxie.xyz/natuzzi/new/groupinfo/index.html"},{"type":"view","name":"官网","url":"http://www.natuzzi.com"},{"type":"view","name":"专卖店","url":"http://www.danielxie.xyz/natuzzi/new/contactus/index.html"}]},{"name":"产品","sub_button":[{"type":"view","name":"Natuzzi Italia","url":"http://www.danielxie.xyz/natuzzi/new/italia/"},{"type":"view","name":"Natuzzi Re-vive","url":"http://www.danielxie.xyz/natuzzi/new/revive/"},{"type":"view","name":"Natuzzi Editions","url":"http://www.danielxie.xyz/natuzzi/new/editions/"}]},{"name":"设计圈","sub_button":[{"type":"view","name":"设计师注册","url":"http://testnatuzzi.kk3k.net/html"},{"type":"view","name":"设计师主页","url":"http://testnatuzzi.kk3k.net/html/?1"},{"type":"click","name":"设计案例展示","key":"button-14"},{"type":"view","name":"最新活动","url":"http://www.aki.com.cn/natuzzi"}]}]}';
-$data = '{"button":[{"name":"上传身份证","url":"http://www.danielxie.xyz/wechat-dev/dev/upload.html"]}';
+$data = '{"button":[{"name":"上传身份证",type:"view","url":"http://www.danielxie.xyz/wechat-dev/dev/upload.html"]}';
 $re = post($url,$data);
 print_r(json_decode($re));
 echo '<hr />';
