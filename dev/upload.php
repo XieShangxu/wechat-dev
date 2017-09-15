@@ -16,6 +16,7 @@ $signPackage = $jssdk->GetSignPackage();
         #container { padding: 20px; }
         #choose-btn, #upload-btn { height: 40px; line-height: 40px; text-align: center; color: #fff; background-color: #04be02; border-radius: 4px; }
         #upload-btn { display: none; }
+        .img-wrapper img { display: block; }
     </style>
 </head>
 <body>
