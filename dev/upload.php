@@ -30,7 +30,7 @@ $signPackage = $jssdk->GetSignPackage();
 <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
 <script>
     wx.config({
-        debug: true,
+        debug: false,
         appId: '<?php echo $signPackage["appId"];?>',
         timestamp: <?php echo $signPackage["timestamp"];?>,
         nonceStr: '<?php echo $signPackage["nonceStr"];?>',
