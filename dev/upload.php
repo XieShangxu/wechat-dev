@@ -14,13 +14,16 @@ $signPackage = $jssdk->GetSignPackage();
     <style>
         * { margin: 0; padding: 0; }
         #container { padding: 20px; }
-        #upload-btn { height: 40px; line-height: 40px; text-align: center; color: #fff; background-color: #04be02; border-radius: 4px; }
+        #choose-btn, #upload-btn { height: 40px; line-height: 40px; text-align: center; color: #fff; background-color: #04be02; border-radius: 4px; }
+        #upload-btn { display: none; }
     </style>
 </head>
 <body>
     <div id="container">
         <!-- <input type="file" /> -->
-        <p id="upload-btn">Upload</p>
+        <p id="choose-btn">选择图片</p>
+        <div class="img-wrapper"></div>
+        <p id="upload-btn">上传</p>
     </div>
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -34,6 +37,7 @@ $signPackage = $jssdk->GetSignPackage();
         signature: '<?php echo $signPackage["signature"];?>',
         jsApiList: [
             // 所有要调用的 API 都要加到这个列表中
+            "getLocalImgData",
             "chooseImage",
             "previewImage",
             "uploadImage",
@@ -41,10 +45,22 @@ $signPackage = $jssdk->GetSignPackage();
         ]
     });
     $(function() {
-        $('#upload-btn').on('click', function() {
+        $('#choose-btn').on('click', function() {
             wx.chooseImage({
                 success: function(res) {
-                    console.log(res);
+                    var errMsg = res.errMsg;
+                    var imgIds = res.localIds;
+                    if (errMsg.indexOf('cancel') > 0) return false;
+                    for (var i = 0; i < imgIds.length; i++) {
+                        wx.getLocalImgData({
+                            localId: imgIds[i],
+                            success: function(res) {
+                                var localData = res.localData;
+                                $('.img-wrapper').append('<img src="' + localData + '" />');
+                            }
+                        })
+                    }
+                    $('#upload-btn').show();
                 }
             })
         })
