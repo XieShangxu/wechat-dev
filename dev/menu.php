@@ -18,7 +18,7 @@ echo '<hr />';
 
 //生成菜单
 $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$ac_token;
-$data = '{"button":[{"name":"上传身份证","type":"view","url":"http://ccc.danielxie.cn/dev/upload.php"]}';
+$data = '{"button":[{"name":"上传身份证","type":"view","url":"http://ccc.danielxie.cn/dev/upload.html"]}';
 $re = post($url,$data);
 print_r(json_decode($re));
 echo '<hr />';
