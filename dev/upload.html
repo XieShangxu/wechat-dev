@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./vconsole.min.js"></script>
+  <script>
+    var vconsole = new VConsole();
+  </script>
+  <title>Upload</title>
+  <style>
+    * { margin: 0; padding: 0; }
+    #container { padding: 20px; }
+    #file-input { display: none; }
+    #choose-btn, #upload-btn { height: 40px; line-height: 40px; text-align: center; color: #fff; background-color: #04be02; border-radius: 4px; }
+    #upload-btn { display: none; }
+    .img-wrapper { margin: 10px 0; }
+    .img-wrapper img { display: block; width: 100%; }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)" />
+    <p id="choose-btn">选择图片</p>
+    <div class="img-wrapper"></div>
+  </div>
+</body>
+<script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+<script>
+  function previewImage(e) {
+    var reader = new FileReader();
+    reader.onload = function(){
+      var image = new Image();
+      image.src = reader.result;
+      $('#img-wrapper').append(image);
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  }
+  $(function() {
+    $('#choose-btn').on('click', function() {
+      $('#file-input').click();
+    })
+  })
+</script>
+</html>
