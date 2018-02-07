@@ -1,7 +1,7 @@
 <?php
 
 // //最简单的验证方式
-// echo $_GET["echostr"];
+echo $_GET["echostr"];
 
 //验证是否来自于微信
 function checkWeixin(){
@@ -26,6 +26,6 @@ function checkWeixin(){
         echo $echostr;
     }
 }
-checkWeixin();
+// checkWeixin();
 
 ?>
