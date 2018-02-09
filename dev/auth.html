@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <base href="/">
+  <title>Auth</title>
+  <style>
+    html, body, #root {
+      height: 100%;
+      -webkit-tap-highlight-color: transparent;
+      font-family: PingFangSC-Regular,Helvetica Neue For Number,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+    }
+  </style>
+  <script>
+    function getQuery(name) {
+      var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null)
+        return unescape(r[2]);
+      return null;
+    }
+    window.onload = function(e) {
+      var code = getQuery('code');
+      var state = getQuery('state');
+      var baseUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb425e6f4c4d92620&redirect_uri=http%3A%2F%2Fccc.danielxie.cn%2F&response_type=code&scope=snsapi_userinfo&state='
+        + 'wechat' + '#wechat_redirect';
+      if (!code) {
+        window.location.href = baseUrl;
+      }
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
